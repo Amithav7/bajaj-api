@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
+import uvicorn
 
 app = FastAPI()
 
@@ -46,7 +47,5 @@ async def process_data(input_data: InputData):
         "sum": str(total_sum),
         "concat_string": concat_string
     }
-
-@app.get("/")
-def health_check():
-    return {"status": "API is running"}
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
