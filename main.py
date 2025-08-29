@@ -1,14 +1,13 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
-from mangum import Mangum   
 
 app = FastAPI()
 
 class InputData(BaseModel):
     data: List[str]
 
-@app.post("/")
+@app.post("/bfhl")
 async def process_data(input_data: InputData):
     data = input_data.data
     full_name = "amithav_mrithyunjay_r"
@@ -48,4 +47,6 @@ async def process_data(input_data: InputData):
         "concat_string": concat_string
     }
 
-handler = Mangum(app)
+@app.get("/")
+def health_check():
+    return {"status": "API is running"}
