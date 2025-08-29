@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
-from mangum import Mangum  
+from mangum import Mangum   
 
 app = FastAPI()
 
