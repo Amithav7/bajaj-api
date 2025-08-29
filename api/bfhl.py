@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
+from mangum import Mangum  
 
 app = FastAPI()
 
@@ -46,6 +47,5 @@ async def process_data(input_data: InputData):
         "sum": str(total_sum),
         "concat_string": concat_string
     }
-@app.get("/")
-def home():
-    return {"status": "API is running"}
+
+handler = Mangum(app)
