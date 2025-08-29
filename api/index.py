@@ -7,13 +7,13 @@ app = FastAPI()
 class InputData(BaseModel):
     data: List[str]
 
-@app.post("/")
+@app.post("/bfhl")
 async def process_data(input_data: InputData):
     data = input_data.data
-    full_name = "amithav_mrithyunjay_r"  
-    dob = "21052004"                    
-    email = "amithavmrithyunjay7@gmail.com"       
-    roll_number = "22BCE5143"            
+    full_name = "amithav_mrithyunjay_r"
+    dob = "21052004"
+    email = "amithavmrithyunjay7@gmail.com"
+    roll_number = "22BCE5143"
 
     even_numbers, odd_numbers, alphabets, special_characters = [], [], [], []
     total_sum = 0
@@ -46,3 +46,6 @@ async def process_data(input_data: InputData):
         "sum": str(total_sum),
         "concat_string": concat_string
     }
+@app.get("/")
+def home():
+    return {"status": "API is running"}
