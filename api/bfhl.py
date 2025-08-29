@@ -7,7 +7,7 @@ app = FastAPI()
 class InputData(BaseModel):
     data: List[str]
 
-@app.post("/bfhl")
+@app.post("/")
 async def process_data(input_data: InputData):
     data = input_data.data
     full_name = "amithav_mrithyunjay_r"
